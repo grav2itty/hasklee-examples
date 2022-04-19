@@ -1,0 +1,56 @@
+name:                hasklee-examples
+version:             0.1.0.0
+github:              "grav2itty/hasklee-examples"
+license:             BSD3
+author:              "Wojciech Szalajko"
+maintainer:          "grav2itty@gmail.com"
+copyright:           "2022 Wojciech Szalajko"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            -
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/githubuser/hasklee-examples#readme>
+
+dependencies:
+- base >= 4.13 && < 5
+- hasklee
+- colour
+- csound-expression
+- csound-catalog
+- diagrams-lib
+- lens
+- linear
+- mtl
+- QuickCheck
+- random
+
+default-extensions:
+- BangPatterns
+- DataKinds
+- DefaultSignatures
+- DeriveAnyClass
+- DeriveGeneric
+- FlexibleContexts
+- FlexibleInstances
+- FunctionalDependencies
+- GeneralizedNewtypeDeriving
+- LambdaCase
+- OverloadedStrings
+- RankNTypes
+- StandaloneDeriving
+- TemplateHaskell
+- TypeFamilies
+- ViewPatterns
+
+library:
+  source-dirs: src
+  exposed-modules:
+    - Hasklee.Examples
