@@ -57,7 +57,7 @@ modernHarp = do
 
   strings <- liftIO (generate (randomPiping frameMesh 0.1 50)) >>=
              traverse stringFun >>=
-             randomizeR (each._allAttributes._ColourAtr.v3) (V3 0 0 0, V3 0.8 0 1)
+             randomizeR (each.allAttributes._ColourAtr.v3) (V3 0 0 0, V3 0.8 0 1)
 
   newObj =<< someLight
   newObj $ translateZ (-25) $ frame <> speaker <> mconcat strings
@@ -82,7 +82,7 @@ noiseInABox = do
       & csoundA sound
 
     cub = solidObj (Cube 2)
-      -- subdivide cube into 27 cubes
+      -- subdivide cube into 27 solids
       & subdiv (pure [0, 0.1, 0.9, 1])
       & nix (1, 1, 1) .~ solidObj EmptySolid
       & nix (1, 2, 2) .~ solidObj EmptySolid
@@ -90,13 +90,13 @@ noiseInABox = do
 
     fun = rID screenID
         -- will receive mouse drag
-        . component (DragSelf 1.0)
+        . component (Drag 1.0)
         -- which will make the object translate along Y axis
         . component (Translator (V3 0 1 0) 0 10 True)
-        -- which will invoke the following Lua code on speaker with 'k'
+        -- which will invoke the following Lua code on speaker with argument
         -- as distance dragged
         . actionS speakerID
-          "k = ...; self.csound.rate = math.max(0, k * 2000)"
+          "if event == 'tran' then self.csound.rate = math.max(0, args[1] * 2000) end"
         . colour CN.crimson
 
   newObj =<< someLight
