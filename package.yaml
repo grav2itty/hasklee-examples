@@ -21,6 +21,7 @@ description:         Please see the README on GitHub at <https://github.com/gith
 
 dependencies:
 - base >= 4.13 && < 5
+- data-default-class
 - hasklee
 - colour
 - csound-expression
@@ -31,6 +32,7 @@ dependencies:
 - mtl
 - QuickCheck
 - random
+- raw-strings-qq
 
 default-extensions:
 - BangPatterns

@@ -1,4 +1,3 @@
-
 module Hasklee.Examples where
 
 import Control.Lens hiding (children, transform)
